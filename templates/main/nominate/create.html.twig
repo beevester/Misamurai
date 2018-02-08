@@ -1,0 +1,92 @@
+{{include('_includes/nav/main.html.twig') }}
+
+
+
+
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+
+        <h1 class="title is-admin is-4">Nominate</h1>
+      </div>
+      <div class="column">
+        <a href="{{path('nominate')}}" class="button is-primary is-pulled-right"><i class="fa fa-user-plus m-r-10"></i> Create New User</a> 
+      </div>
+    </div>
+    <hr class="m-t-0">
+
+    <div class="card " style="width: 500px; left: center">
+      <div class="card-content">
+        <form action="{{route('posts.store')}}" method="post">
+      {{ csrf_field() }}
+
+      <div class="columns">
+        <div class="column is-three-quarters-desktop is-three-quarters-tablet">
+          <b-field>
+            <b-input type="text" placeholder="Current user" size="is-large" v-model="title" name="userId">
+            </b-input>
+            <b-input type="text" placeholder="Nominee" size="is-large" v-model="title" name="nomineeId">
+            </b-input>
+          </b-field>
+
+          <slug-widget url="{{url('/')}}" subdirectory="blog" :title="title" @copied="slugCopied" @slug-changed="updateSlug"></slug-widget>
+          <input type="hidden" v-model="slug" />
+
+          <b-field class="m-t-40">
+            <b-input type="textarea"
+                placeholder="Compose your masterpiece..." rows="20" name="comment">
+            </b-input>
+          </b-field>
+        </div> <!-- end of .column.is-three-quarters -->
+
+        <div class="column is-one-quarter-desktop is-narrow-tablet">
+          <div class="card card-widget">
+            <div class="publish-buttons-widget widget-area">
+              <div class="primary-action-button">
+                <button class="button is-primary is-fullwidth">Publish</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end of .column.is-one-quarter -->
+      </div>
+    </form>
+      </div>
+    </div>
+
+
+  </div> <!-- end of .flex-container -->
+
+@endsection
+
+@section('scripts')
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        id: '',
+        title: '',
+        slug: '',
+
+      },
+      methods: {
+        updateSlug: function(val) {
+          this.slug = val;
+        },
+        slugCopied: function(type, msg, val) {
+          notifications.toast(msg, {type: `is-${type}`});
+        }
+      },
+      computed: {
+            filteredDataArray() {
+                return this.data.filter((option) => {
+                    return option
+                        .toString()
+                        .toLowerCase()
+                        .indexOf(this.name.toLowerCase()) >= 0
+              })
+          }
+      }
+    });
+  </script>
+@endsection

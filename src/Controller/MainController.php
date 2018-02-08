@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class MainController extends Controller
 {
     /**
-     * @Route("/", name="main")
+     * @Route("/", name="homepage")
      */
     public function index()
     {
@@ -24,10 +24,11 @@ class MainController extends Controller
              $api[] = ['type' => 'nominationsApi'];
              $api[] = ['type' => 'achievementsApi'];
         };
-        
+
         shuffle($api);
 
         // Homepage index rendering
         return $this->render('main/index.html.twig', [ 'apiCall' => $api]);
     }
+
 }

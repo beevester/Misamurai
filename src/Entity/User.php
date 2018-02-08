@@ -16,5 +16,15 @@ class User
      */
     private $id;
 
-    // add your own fields
+    private $userName;
+
+    private $email;
+
+    private $avatar;
+
+    private $created_at;
+
+    private $update_at;
+
+    private $password;
 }

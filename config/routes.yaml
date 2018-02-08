@@ -1,3 +1,60 @@
-index:
-   path: /
-   controller: App\Controller\DefaultController::index
+#
+# index:
+#    path: /
+#    controller: App\Controller\UserController::index
+#
+# user-register:
+#    path: /user/create
+#    controller: App\Controller\UserController::create
+#
+# user-store:
+#    path: /user/store
+#    controller: App\Controller\UserController::store
+#
+# user-show:
+#    path: /user/{}
+#    controller: App\Controller\UserController::show
+#
+# user-edit:
+#    path: /user/edit/{}
+#    controller: App\Controller\UserController::edit
+#
+# user-update:
+#    path: /user/update/{}
+#    controller: App\Controller\UserController::update
+#
+# user-delete:
+#    path: /user/delete/{}
+#    controller: App\Controller\UserController::destroy
+#
+# index:
+#    path: /manage/
+#    controller: App\Controller\MainController::index
+#
+# manage-rolepremission:
+#    path: /manage/create
+#    controller: App\Controller\UserController::create
+#
+# manage-store:
+#    path: /manage/store
+#    controller: App\Controller\MainController::store
+#
+# manage-show:
+#    path: /manage/user/{}
+#    controller: App\Controller\MainController::show
+#
+# manage-edit:
+#    path: /manage/user/edit/{}
+#    controller: App\Controller\MainController::edit
+#
+# manage-update:
+#    path: /manage/user/update/{}
+#    controller: App\Controller\MainController::update
+#
+# manage-role-permission:
+#    path: /manage/user/permissions-role/{}
+#    controller: App\Controller\MainController::editrolepermission
+#
+# manage-delete:
+#    path: /manage/user/delete/{}
+#    controller: App\Controller\MainController::destroy
