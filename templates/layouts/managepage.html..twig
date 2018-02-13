@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=1">
+
+        <title>{% block title %}Miway Samurai Awards!{% endblock %}</title>
+
+        <!-- Style -->
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+    
+        <!-- front-end navigation included -->
+        <div id="app">
+            {% block body %}{% endblock %} 
+        </div>
+
+        <!-- scripts -->
+        {% block javascripts %}
+            <script src="{{ asset('build/app.js') }}"></script>
+            <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/app.js')}}"></script>
+        {% endblock %}
+    </body>
+ </html>

@@ -1,9 +1,18 @@
-// index.js or main.js
-//
+import Vue from 'vue';
+import App from './App.vue';
 
-import Vue from 'vue'
-import Vuetify from 'vuetify'
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
 
-Vue.use(Vuetify)
+function openNav(){
+  document.getElementById("slideSideBar").style.width = "250px";
+  document.getElementById("mainContent").style.marginLeft = "250px";
+}
 
-import('path/to/node_modules/vuetify/dist/vuetify.min.css') // Ensure you are using css-loader
+function closeNav(){
+  document.getElementById("slideSideBar").style.width = "0";
+  document.getElementById("mainContent").style.marginLeft = "0";
+}
+

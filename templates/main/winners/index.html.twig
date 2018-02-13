@@ -1,0 +1,142 @@
+{% extends 'layouts/homepage.html.twig' %}
+
+{% block body %}
+
+<div class="container-fluid navspace">
+  <div class="columns">
+    <div class="column">
+      Welcome note
+    </div>
+    <div class="column">
+      a button
+    </div>
+  </div>
+</div>
+<!-- loads the nomination -->
+
+
+<div class="container-fluid" >
+  <div class="row">
+      {% for i in 0..10 %}
+      <div class="col-sm-3" style="margin-top: 20px">
+        <div class="card">
+          <div class="card-img">
+            <div class="container" style="width:100%; padding-left: 0px; padding-right: 0px">
+              <img src="{{ asset('images/catwoman.jpg')}}" alt="Avatar" class="image" >
+              <div class="middle">
+                <div class="">
+                  <a href="#">Vote</a>
+                </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Comments
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="media">
+    <img class="mr-3" src="..." alt="Gge">
+    <div class="media-body">
+      <h5 class="mt-0">Media heading</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+      <div class="media mt-3">
+        <a class="pr-3" href="#">
+          <img src="..." alt="Gimage">
+        </a>
+        <div class="media-body">
+          <h5 class="mt-0">Media heading</h5>
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+      </div>
+    </div>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+            <br>
+            <br>
+            {% for i in 0..5 %}
+
+            <a href="#"><img src="{{ asset('images/batman.png')}}" alt="Avatar" class="avatar"></a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<!-- end of the load for nomination -->
+
+<style>
+.container {
+position: relative;
+width: 50%;
+}
+.navspace{
+  margin-top: 50px;
+}
+.image {
+opacity: 1;
+display: block;
+width: 100%;
+height: auto;
+transition: .5s ease;
+backface-visibility: hidden;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+text-align: center;
+}
+
+.container:hover .image {
+opacity: 0.3;
+}
+
+.container:hover .middle {
+opacity: 1;
+}
+
+.text {
+background-color: #4CAF50;
+color: white;
+font-size: 16px;
+padding: 16px 32px;
+}
+</style>
+
+{% endblock %}

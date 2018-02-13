@@ -1,0 +1,30 @@
+<div class="col-sm-6" style="margin-top: 20px">
+       <div class="card">
+            <div class="card-img-top">
+                <div class="imgContainer" style="width:100%; padding-left: 0px; padding-right: 0px">
+                    <img src="{{ asset('images/catwoman.jpg')}}" alt="Avatar" class="image" >
+                    <div class="middle">
+                        <a href="#"><button type="button" class="btn btn-outline-success">Vote</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        {# the people how comment / voted the nominee #}
+                        {% for i in 0..5 %}
+                            <a href="#"><img src="{{ asset('images/batman.png')}}" alt="Avatar" class="avatar"></a>
+                        {% endfor %}
+                            <br>
+                            <br>
+            <div class="card-footer">  
+                <!-- Button trigger modal -->
+                <span class="btn cardBtn">like</span>
+                <span  class="btn cardBtn" data-toggle="modal" data-target="#commentModal">Comments</span>             
+            </div>                  
+                <!-- Comment modal -->
+                {{ include('main/nominate/comment/modal.html.twig')}}                         
+            </div>
+        </div>
+    </div>
+

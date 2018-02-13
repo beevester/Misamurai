@@ -1,27 +1,30 @@
-{% extends "base.html.twig" %}
-
-{% block body %}
-
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"></a>
+
   <img src="{{ asset('images/miway.png') }}" alt="">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{path('main.homepage')}}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Nomination</a>
+      <li class="nav-item dropdown clearfix">
+        <a class="nav-link dropdown-toggle float-right" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Nomination
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{{ path('nomination')}}">This month nominations</a>
+          <a class="dropdown-item" href="#">Comments</a>
+          <a class="dropdown-item" href="#">Best ranking</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Winners</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          User Name
+      <li class="nav-item">
+        <a class="nav-link" href="#">achievements</a>
+      </li>
+      <li class="nav-item dropdown clearfix">
+        <a class="nav-link dropdown-toggle justify-content-end" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User Nameclearfix
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">Action</a>
@@ -32,4 +35,3 @@
     </ul>
   </div>
 </nav>
-{% endblock %}

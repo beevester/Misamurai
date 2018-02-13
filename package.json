@@ -16,6 +16,9 @@
     },
     "dependencies": {
         "bootstrap": "^4.0.0",
+        "font-awesome": "^4.7.0",
+        "requirejs": "^2.3.5",
+        "vue": "^2.5.13",
         "vuetify": "^0.17.7"
     }
 }

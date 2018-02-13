@@ -1,0 +1,30 @@
+{% extends 'layouts/homepage.html.twig' %}
+
+{% block body %}
+{{ include('_includes/nav/main.html.twig')}}
+{{ include('main/nominate/create.html.twig')}}
+<!-- loads the nomination -->
+<div class="container-fluid" >
+      <div class="row">
+        <div class="col-sm-3 sideContent"></div>
+        {# main content #}
+        <div class="col-sm-5">
+        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Add nomination 
+            </button>
+
+                <div class="row">
+                    {% for i in 0..10 %}
+                        {{include('main/nominate/comment/usercomments.html.twig')}}
+                    {% endfor %}
+                </div>
+                    
+        </div>
+        <div class="col-sm"></div>
+      </div>
+</div>
+<!-- end of the load for nomination -->
+
+
+{% endblock %}
