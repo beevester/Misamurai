@@ -1,0 +1,9 @@
+{% extends 'layouts/homepage.html.twig'%}
+
+{% block body %}
+    {{ form_start(userForm) }}
+        {{ form_widget(userForm)}}
+        <button type="submit" class="btn btn-primary"></button>
+    {{ form_end(userForm) }}
+test
+{% endblock %}
