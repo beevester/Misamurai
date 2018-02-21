@@ -1,8 +1,10 @@
-define(['Vue', 'Vueity'], function(Vue){
+define(['Vue'], function(Vue){
   
   Vue.component('test', {
-    template: "<p>test</p>"
-  })
+    prop: ['name']
+  }
+
+  );
 
   var a = new Vue({
     el: '#app'

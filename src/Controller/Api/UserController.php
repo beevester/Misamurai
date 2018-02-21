@@ -1,28 +1,20 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use App\Controller\Api\UserController;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 
-class NominationController extends Controller
+
+class UserController extends Controller
 {
     /**
-     * @Route("/nominations", name="nominations")
+     * @Route("/users_details", name="usersDetails")
      */
-    public function index()
-    {
-        
-        return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
-    }
-
-    /**
-     * @Route("/nominate", name="nominate")
-     */
-    public function create()
+    public function usersDatails()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -34,7 +26,10 @@ class NominationController extends Controller
             $userApi[] = $this->serializeUsersDetails($user);
             }
 
-        return $this->render('main/nominate/create.html.twig',[ 'userApi' => json_encode($userApi) ]);
+        $response = new Response(json_encode($userApi), 200);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    
     }
 
     public function serializeUsersDetails(User $users)
@@ -46,7 +41,4 @@ class NominationController extends Controller
         ];
     }
 
-    public function store(){
-        
-    }
 }

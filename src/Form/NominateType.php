@@ -12,7 +12,8 @@ class NominateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('field_name')
+            ->add('usename')
+            ->add('nominee')
         ;
     }
 

@@ -9,11 +9,13 @@
         {% endblock %}
     </head>
     <body>
-        <div id="app">{% block body %}{% endblock %}</div>
-        {% block javascripts %}
-          <script src="{{ asset('js/app.js') }}"></script>
-         
-        {% endblock %}
+        <div id="app">
+        
+        <test></test>
+        </div>
+       
+          <script data-main="js/app" src="{{ asset('js/requirejs.js')}}"><script>
+      
     </body>
 </html>
 

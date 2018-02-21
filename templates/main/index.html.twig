@@ -52,7 +52,9 @@
 
           <!-- New API feed mixed nominations and achievements -->
     <div class="card-columns">
-    {% for element in apiCall %}
+    
+   {% for $i; %}
+       {% for element in apiCall %}
 
     {% if element.type == 'newsApi' %}
           <div class="card bg-primary text-white text-center p-3">
@@ -76,7 +78,7 @@
                 </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title"></h5>
               <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
@@ -101,6 +103,7 @@
     {% endif %}
 
     {% endfor %}
+   {% endfor %}
 
     </div>
     </div>

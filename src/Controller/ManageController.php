@@ -13,7 +13,7 @@ class ManageController extends Controller
      */
     public function index()
     {
-        // replace this line with your own code!
-        return $this->render('_includes/nav/main.html.twig');
+        
+        return $this->render('manage/index.html.twig');
     }
 }

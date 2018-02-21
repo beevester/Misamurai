@@ -17,6 +17,7 @@
         <!-- front-end navigation included -->
 
         <div id="app">
+            
             {% block body %}{% endblock %}
            
             
@@ -25,11 +26,9 @@
 
 
         <!-- scripts -->
+         <script data-main="js/config" src="{{ asset('js/require.js')}}"><script>
         {% block javascripts %}
-            <script src="{{ asset('build/app.js') }}"></script>
-            <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
-            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('js/app.js')}}"></script>
+           
         {% endblock %}
     </body>
- </html>
+</html>

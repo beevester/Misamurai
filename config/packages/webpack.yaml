@@ -1,0 +1,12 @@
+maba_webpack:
+    enabled_bundles:
+        # - App
+    twig:
+        additional_directories:
+            # - %kernel.root_dir%/config/packages
+    config:
+        parameters:
+            extract_css: false
+    dashboard:
+        enabled: always
+        executable: [/node_modules, node_modules/webpack-dashboard/bin/webpack-dashboard.js]

@@ -20,6 +20,9 @@
     "doctrine/common": {
         "version": "v2.8.1"
     },
+    "doctrine/data-fixtures": {
+        "version": "v1.3.0"
+    },
     "doctrine/dbal": {
         "version": "v2.6.3"
     },
@@ -34,6 +37,15 @@
     },
     "doctrine/doctrine-cache-bundle": {
         "version": "1.3.2"
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "2ea6070ecf365f9a801ccaed4b31d4a3b7af5693"
+        }
     },
     "doctrine/doctrine-migrations-bundle": {
         "version": "1.2",
@@ -76,6 +88,18 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "maba/dependency-injection-extra": {
+        "version": "1.0.0"
+    },
+    "maba/webpack-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "33b0bf2e73d774902dd21bab3d93f5b5ce459668"
+        }
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -322,6 +346,9 @@
             "version": "2.5",
             "ref": "3db029c03e452b4a23f7fc45cec7c922c2247eb8"
         }
+    },
+    "symfony/templating": {
+        "version": "v4.0.4"
     },
     "symfony/translation": {
         "version": "3.3",

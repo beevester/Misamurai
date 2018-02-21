@@ -8,12 +8,28 @@
 <!-- loads the nomination -->
 <div class="container-fluid">
       <div class="row" style="margin: 100px">
-            <div class="col-sm-3">Test</div>
+            {# side menu #}
+            <div class="col-sm-3">
+                  <ul>
+                        <li>Manage Users
+                              <ul>
+                              
+                                    <li>View users</li>
+                                    <li> users</li>
+                                    <li>View users</li>
+                              
+                              </ul>
+                        </li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                  </ul>
+            </div>
             <div class="col-sm-6">
                 <div class="row">
-                    {% for i in 0..10 %}
-                        {{include('main/nominate/userDetails.html.twig')}}
-                    {% endfor %}
+                   
+                        {{include('manage/users/show.html.twig')}}
+                   
                 </div> 
             </div>
             <div class="col-sm-3">sskddjf</div>

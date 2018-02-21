@@ -6,25 +6,77 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\NewUserType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends Controller
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/users", name="users")
      */
     public function index()
     {
-        // replace this line with your own code!
-        return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('App\Entity\User')->findAll();
+
+        $userApi = [];
+
+        foreach ($users as $user) {
+            $userApi[] = $this->serializeUsersDetails($user);
+            }
+
+        
+        return $this->render('manage/index.html.twig', ['userApi' => json_encode($userApi)]);
     }
 
-    /**
-     * @Route("/user/create", name="create.user")
-     */
-    public function create()
+    public function serializeUsersDetails(User $users)
     {
-        //
-        return $this->render('manage.users.create');
+        return [
+            'username' => $users->getUsername(),
+            'email' => $users->getEmail(),
+            'avatar' => $users->getAvatar()
+        ];
+    }
+    /**
+     * @Route("/user/create", name="create_user")
+     */
+    public function create(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        
+        $user = new User();
+        
+        $user->setPlainPassword('password');
+        $user->setEmail('nyiko@mail.co.za');
+        $form = $this->createForm(NewUserType::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $user->setEmail($user->getUsername().'@app.com');
+            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            $user->setAvatar('Place holder');
+            $user->setApiKey('chechout'.$user->getEmail());
+            $user = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            
+            $em->persist($user);
+            $em->flush();
+
+
+
+            return new Response('Done');
+        }
+
+        return $this->render('manage/users/create.html.twig', [
+            'userForm' => $form->createView(),
+        ]);
     }
 
     /**

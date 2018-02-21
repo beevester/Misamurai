@@ -5,6 +5,7 @@ namespace App\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\User;
 
 class MainController extends Controller
 {
@@ -13,21 +14,22 @@ class MainController extends Controller
      */
     public function index()
     {
-        // This is to randomise the API
-        $newsApi = [0,1,2,3,4,5];
-        $nominationsApi = [0,1,2,3,4,5];
-        $achievementsApi = [0,1,2,3,4,5];
+        // This is to randomise the feed API for the homepage
+        $em = $this->getDoctrine()->getManager();
+        $nominationsApi = $em->getRepository('App\Entity\User')->findAll();
 
-        for ($i=0; $i < 9; $i++) {
-             $api[] = ['type' => 'newsApi'];
-             $api[] = ['type' => 'pictureApi'];
-             $api[] = ['type' => 'nominationsApi'];
-             $api[] = ['type' => 'achievementsApi'];
-        };
-
-        shuffle($api);
-
+        
+        
+        
         // Homepage index rendering
-        return $this->render('main/index.html.twig', [ 'apiCall' => $api]);
+        return $this->render('main/index.html.twig', [ 'apiCall' => $api, 'user' => $nominationsApi]);
+    }
+
+    /**
+     * @Route("/base")
+     */
+    public function test()
+    {
+        return $this->render('base.html.twig');
     }
 }
