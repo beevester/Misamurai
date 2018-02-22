@@ -1,0 +1,14 @@
+{
+  "name": "requirestart",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": null,
+    "requirejs": null,
+    "backbone-amd": null,
+    "underscore-amd": null,
+    "babel": "^5.8.38",
+    "vue": "^2.5.13",
+    "react": null
+   
+  }
+}

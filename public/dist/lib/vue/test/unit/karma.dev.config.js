@@ -1,0 +1,1 @@
+var base=require("./karma.base.config.js");module.exports=function(s){s.set(Object.assign(base,{browsers:["PhantomJS"],reporters:["progress"],plugins:base.plugins.concat(["karma-phantomjs-launcher"])}))};

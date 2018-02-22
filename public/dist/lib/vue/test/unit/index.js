@@ -1,0 +1,1 @@
+require("es6-promise/auto");const helpersContext=require.context("../helpers",!0);helpersContext.keys().forEach(helpersContext);const testsContext=require.context("./",!0,/\.spec$/);testsContext.keys().forEach(testsContext);

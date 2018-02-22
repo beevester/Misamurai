@@ -1,0 +1,36 @@
+{
+  "name": "requirejs-vue",
+  "description": "An AMD loader for Vue components 🤘🏽",
+  "main": "requirejs-vue.js",
+  "authors": [
+    "Wiktor Serow <vikseriq@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "vuejs",
+    "requirejs",
+    "loader",
+    "vue"
+  ],
+  "homepage": "https://github.com/vikseriq/requirejs-vue",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "requirejs": "^2.3.5",
+    "vue": "^2.5.9"
+  },
+  "version": "1.1.5",
+  "_release": "1.1.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.5",
+    "commit": "54fc6119e36d855db0eb0c434efcc15a023f0ba7"
+  },
+  "_source": "https://github.com/vikseriq/requirejs-vue.git",
+  "_target": "^1.1.5",
+  "_originalSource": "requirejs-vue",
+  "_direct": true
+}

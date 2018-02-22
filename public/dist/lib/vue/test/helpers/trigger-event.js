@@ -1,0 +1,1 @@
+window.triggerEvent=function(t,n,e){var i=document.createEvent("HTMLEvents");i.initEvent(n,!0,!0),e&&e(i),t.dispatchEvent(i)};

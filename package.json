@@ -26,6 +26,9 @@
         "backbone": "^1.3.3",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
+        "requirejs": "^2.3.5",
+        "requirejs-react-jsx": "^1.0.2",
+        "requirejs-vue": "^1.1.5",
         "typescript": "^2.7.2",
         "underscore": "^1.8.3"
     }

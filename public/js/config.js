@@ -1,35 +1,30 @@
 requirejs.config({
     baseUrl: 'js/',
     paths: {
-        Vue: "lib/vue.min",
+        Vue: "lib/vue/dist/vue.min",
+        Vuejs: "lib/requirejs-vue/requirejs-vue",
         jquery: "lib/jquery-3.3.1.min",
         bootstrap: "lib/bootstrap.min",
-        Vue: "lib/require-vuejs.min",
         react: "lib/react.production.min.js",
         reactdom: "lib/react-dom.production.min.js",
         underscore: "lib/underscore-min.js",
-        backbone: "lib/backbone-min.js",
+        backbone: "lib/backbone-min.js",   
     },
     shim: {
         Vue: {
             exports: "Vue"
-        },
-        jquery: {
-            exports: '$'
-        },
-        underscore: {
-            exports: '_'
-        },
-        backbone: {
-            deps: ["underscore", "jquery"],
-            exports: "Backbone"
-        },
-        console: {
-            exports: "console"
+    },
+    config: {
+        'vue': {
+            'pug': 'browser-pug',
+            'css': 'inject',
+            'templateVar': 'template'
         }
     }
+}
 });
 
 // load the vue main js
-import Vue from 'vue'
-
+require(['Vue', 'Vuejs!component'], function (component) {
+	
+});

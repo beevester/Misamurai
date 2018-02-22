@@ -1,0 +1,1 @@
+const hash=require("hash-sum");module.exports=function(e){const s=hash(this.request);return e.replace("__MODULE_ID__",s)};

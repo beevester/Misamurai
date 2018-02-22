@@ -1,0 +1,15 @@
+{
+  "name": "typescript",
+  "homepage": "https://github.com/Microsoft/TypeScript",
+  "version": "2.7.2",
+  "_release": "2.7.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.7.2",
+    "commit": "90e6f4984a52c6e403d2b799492ea81fd5d9dd71"
+  },
+  "_source": "https://github.com/Microsoft/TypeScript.git",
+  "_target": "^2.7.2",
+  "_originalSource": "typescript",
+  "_direct": true
+}

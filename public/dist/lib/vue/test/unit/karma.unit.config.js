@@ -1,0 +1,1 @@
+var base=require("./karma.base.config.js");module.exports=function(r){r.set(Object.assign(base,{browsers:["Chrome","Firefox","Safari"],reporters:["progress"],singleRun:!0,plugins:base.plugins.concat(["karma-chrome-launcher","karma-firefox-launcher","karma-safari-launcher"])}))};

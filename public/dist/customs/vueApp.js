@@ -1,0 +1,1 @@
+define(["Vue"],function(e){e.component("test",{prop:["name"]});new e({el:"#app"})});
