@@ -33,8 +33,18 @@ class Permission
      */
     private $description;
 
-    
+
     private $permissionUser;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $created_at;
+
+    public function __construct()
+    {
+      $this->created_at = new \DateTime();
+    }
 
     public function getName(){
         return $this->name;
@@ -49,15 +59,15 @@ class Permission
     }
 
     public function setDisplay_name($display_name){
-        $this->password = $display_name;
+        $this->display_name = $display_name;
     }
 
     public function getDescription(){
         return $this->description;
     }
 
-    public function setDesciption($description){
-        $this->descrition = $description;
+    public function setDescription($description){
+        $this->description = $description;
     }
 
 }

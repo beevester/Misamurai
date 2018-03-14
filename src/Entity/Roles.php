@@ -38,6 +38,8 @@ class Roles
      */
     private $roleUser;
 
+
+
     public function getName(){
         return $this->name;
     }
@@ -62,5 +64,3 @@ class Roles
         $this->descrition = $description;
     }
 }
-
-

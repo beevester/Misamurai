@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=1">
+
+        <title>{% block title %}Miway Samurai Awards!{% endblock %}</title>
+
+        <!-- Style -->
+        {% block stylesheets %}
+
+           <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+           <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+            {% include '_includes/nav/manage.html.twig' %}
+        <div id="app">
+
+          <div class="container-fluid">
+            <div class="row">
+              {% include '_includes/nav/sidemenu.html.twig' %}
+              <main class="col-md-9 ml-sm-suto col lg-10 pt-3 px-4">
+                {% block main %}{% endblock %}
+              </main>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- scripts -->
+        
+        <script data-main="/js/config" src="{{asset('js/require.js')}}"></script>
+        {% block javascripts %}
+
+
+        {% endblock %}
+
+
+
+    </body>
+ </html>

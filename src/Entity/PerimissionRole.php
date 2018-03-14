@@ -16,5 +16,15 @@ class PerimissionRole
      */
     private $id;
 
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $created_at;
+
+    public function __construct()
+    {
+      $this->created_at = new \DateTime();
+    }
     // add your own fields
 }

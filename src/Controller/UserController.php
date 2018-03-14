@@ -20,18 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('App\Entity\User')->findAll();
-
-        $userApi = [];
-
-        foreach ($users as $user) {
-            $userApi[] = $this->serializeUsersDetails($user);
-            }
-
-        
-        return $this->render('manage/index.html.twig', ['userApi' => json_encode($userApi)]);
+        return $this->render('manage/index.html.twig');
     }
 
     public function serializeUsersDetails(User $users)
@@ -47,11 +37,13 @@ class UserController extends Controller
      */
     public function create(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
-        
+
         $user = new User();
-        
+        $em = $this->getDoctrine()->getManager();
+
         $user->setPlainPassword('password');
         $user->setEmail('nyiko@mail.co.za');
+
         $form = $this->createForm(NewUserType::class, $user);
 
         $form->handleRequest($request);
@@ -62,19 +54,18 @@ class UserController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             $user->setAvatar('Place holder');
-            $user->setApiKey('chechout'.$user->getEmail());
+            $user->setApiKey('dump'.$user->getEmail());
             $user = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            
+
             $em->persist($user);
             $em->flush();
 
 
 
-            return new Response('Done');
-        }
+            return new Response('You will get you default Password in your email: '. $user->getEmail());
+        };
 
-        return $this->render('manage/users/create.html.twig', [
+        return $this->render('manage/user/create.html.twig', [
             'userForm' => $form->createView(),
         ]);
     }

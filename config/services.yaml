@@ -26,6 +26,20 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+        # arguments: ["@em", "@router"]
     app.security.login_form_authenticator:
-        class: 'src/Security/User.php'
+        class: App\Security\LoginFormAuthenticator
         autowire: true
+
+    webservice:
+        class: App\Security\User\WebserviceUserProvider
+        autowire: true
+
+fos_user:
+   db_driver: orm
+   firewall_name: main
+   user_class: App\Entity\User
+   from_email:
+        address: "noreply@yourcompany.com"
+        sender_name: "No Reply"

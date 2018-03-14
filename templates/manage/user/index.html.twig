@@ -1,0 +1,43 @@
+{% extends 'layouts/managepage.html.twig' %}
+
+
+{% block main %}
+
+<div class="column">
+  <h2 class="title">View users</h2>
+</div>
+<table class="table table-striped">
+
+<thead>
+<tr>
+  <th scope="col">Username</th>
+  <th scope="col">Email</th>
+  <th scope="col">Edit</th>
+</tr>
+</thead>
+<tbody>
+
+
+<div class=""  >
+
+
+<tr v-for="user in userApi">
+  <td>${user.username}</td>
+  <td>${user.email}</td>
+  <td><a :href="userRoot" class="btn btn-outline-secondary btn-sm">Edit</a></td>
+</tr>
+</div>
+
+
+</tbody>
+</table>
+{% endblock %}
+
+
+{% block javascripts %}
+<script type="text/javascript">
+  require(['customs/users/userDetailsApi'], function(){
+
+  })
+</script>
+{% endblock %}

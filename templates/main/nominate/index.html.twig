@@ -1,25 +1,53 @@
 {% extends 'layouts/homepage.html.twig' %}
 
 {% block body %}
-<div>
-{{ include('_includes/nav/main.html.twig')}}
-</div>
-{{ include('main/nominate/create.html.twig')}}
-<!-- loads the nomination -->
-<div class="container-fluid" style="margin: 20px">
-      <div class="row">
-            <div class="col-sm-3">Test</div>
-            <div class="col-sm-6">
-                <div class="row">
-                    {% for i in 0..10 %}
-                        {{include('main/nominate/userDetails.html.twig')}}
-                    {% endfor %}
-                </div> 
-            </div>
-            <div class="col-sm-3">sskddjf</div>
+<!-- Button trigger modal -->
+<div class="container" style="margin-bottom:10px">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Nomination</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        {% include '_includes/forms/nominate.html.twig' %}
+      </div>
+
+    </div>
+  </div>
 </div>
-<!-- end of the load for nomination -->
+</div>
+                <div class="row" v-for="nominee in loadNominationApi">
 
+                      <div class="card shadow col-4">
+                        {% include 'manage/user/partial/userDetails.html.twig' %}
+                        <div class="card-text">
+                          comment Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem nesciunt soluta exercitationem ex, harum ipsa veniam veritatis porro maiores enim hic aspernatur, placeat nam ullam possimus, facilis at fugiat eaque.
+                        </div>
+                        <div class="card-footer">
+                          <span class="btn cardBtn">like</span>
+                          <span  class="btn cardBtn" data-toggle="modal" data-target="#commentModal">Comments</span>
 
+                          <!-- Comment modal -->
+                          {{ include('main/nominate/comment/modal.html.twig')}}
+                        </div>
+                      </div>
+
+                </div>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+  require(['js/customs/nominations/nominate.js', 'js/customs/nominations/styles.js'], function(){
+
+  })
+</script>
 {% endblock %}

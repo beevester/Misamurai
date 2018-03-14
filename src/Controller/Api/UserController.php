@@ -7,29 +7,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
+use Doctrine\ORM\Query;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 
 class UserController extends Controller
 {
     /**
-     * @Route("/users_details", name="usersDetails")
+     * @Route("/api/users")
+     * @Method("GET")
      */
-    public function usersDatails()
+    public function getUsersdetails()
     {
-        $em = $this->getDoctrine()->getManager();
+      $users = $this->getDoctrine()
+                    ->getRepository('App\Entity\User')
+                    ->findAll();
 
-        $users = $em->getRepository('App\Entity\User')->findAll();
+      $userApi = [];
 
-        $userApi = [];
-
-        foreach ($users as $user) {
-            $userApi[] = $this->serializeUsersDetails($user);
-            }
+      foreach ($users as $user) {
+          $userApi[] = $this->serializeUsersDetails($user);
+          }
 
         $response = new Response(json_encode($userApi), 200);
         $response->headers->set('Content-Type', 'application/json');
         return $response;
-    
+
     }
 
     public function serializeUsersDetails(User $users)
@@ -39,6 +42,19 @@ class UserController extends Controller
             'email' => $users->getEmail(),
             'avatar' => $users->getAvatar()
         ];
+    }
+
+    /**
+     * @Route("/api/userObject/{user}")
+     * @Method("GET")
+     */
+    public function userObject($user)
+    {
+      $users = $this->getDoctrine()
+                    ->getRepository('App\Entity\User')
+                    ->findByUsername($user);
+
+      return new Response($users);
     }
 
 }

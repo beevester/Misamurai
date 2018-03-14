@@ -8,7 +8,7 @@
     "underscore-amd": null,
     "babel": "^5.8.38",
     "vue": "^2.5.13",
-    "react": null
-   
+    "react": null,
+    "axios": "^0.18.0",
   }
 }

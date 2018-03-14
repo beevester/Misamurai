@@ -1,17 +1,18 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 
   <img src="{{ asset('images/miway.png') }}" alt="">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav " style="width: auto">
       <li class="nav-item active">
         <a class="nav-link" href="{{path('main.homepage')}}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown clearfix">
-        <a class="nav-link dropdown-toggle float-right" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle float-right" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Nomination
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">This month nominations</a>
+          <a href="{{path('nominate')}}" class="dropdown-item">Nominate</a>
+          <a class="dropdown-item" href="{{path('main.nomination')}}">This month nominations</a>
           <a class="dropdown-item" href="#">Comments</a>
           <a class="dropdown-item" href="#">Best ranking</a>
         </div>
@@ -25,6 +26,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Winners</a>
       </li>
+
     </ul>
   </div>
 </nav>

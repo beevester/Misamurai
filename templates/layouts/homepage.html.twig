@@ -9,26 +9,34 @@
 
         <!-- Style -->
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/s_nav.css') }}">
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('js/lib/select2/dist/css/select2.min.css') }}">
         {% endblock %}
     </head>
     <body>
         <!-- front-end navigation included -->
-
+        {% include '_includes/nav/main.html.twig' %}
         <div id="app">
-            
-            {% block body %}{% endblock %}
-           
-            
+          {% block carousel %}{% endblock %}
+
+          <div class="container">
+            <div class="row">
+
+              <main class="col-md-9 ml-sm-suto col lg-10 pt-3 px-4">
+                {% block body %}{% endblock %}
+                {% block login %}{% endblock login %}
+              </main>
+            </div>
+          </div>
+
         </div>
-
-
-
         <!-- scripts -->
-         <script data-main="js/config" src="{{ asset('js/require.js')}}"><script>
+
+        {% include 'requirejs/main.html.twig' %}
         {% block javascripts %}
-           
+
         {% endblock %}
     </body>
 </html>

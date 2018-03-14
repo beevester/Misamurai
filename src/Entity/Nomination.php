@@ -7,26 +7,36 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NominationRepository")
  */
-class Nomination
+class Nomination implements \Serializable
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
      */
-    private $user;
+    public $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
      */
-    private $nominee;
+    public $nominee;
 
-    public function getName()
+    /**
+     * @ORM\Column(name="Nominated_on", type="date")
+     */
+    public $nominateDate;
+
+    public function __construct()
+    {
+      $this->nominateDate = new \DateTime();
+    }
+
+    public function getId()
     {
         $this->id;
     }
@@ -49,5 +59,21 @@ class Nomination
     public function setNominee(User $nominee)
     {
         $this->nominee = $nominee;
+    }
+
+    public function serialize(){
+        return serialize(array(
+            $this->id,
+            $this->user,
+            $this->nomination
+        ));
+    }
+
+    public function unserialize($serialized){
+        list (
+            $this->id,
+            $this->user,
+            $this->nomination
+        ) = unserialize($serialized);
     }
 }

@@ -13,16 +13,14 @@ class PermissionRepository extends ServiceEntityRepository
         parent::__construct($registry, Permission::class);
     }
 
-    /*
-    public function findBySomething($value)
+
+    public function findByName($value)
     {
         return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('p.name = :value')->setParameter('value', $value)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 }

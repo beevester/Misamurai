@@ -1,0 +1,25 @@
+.s-nav{
+  width: auto;
+  height: 40px;
+  position: sticky;
+  z-index: 1;
+  float: left;
+
+}
+.s-nav-start{
+
+
+}
+
+.s-nav-end{
+
+}
+@media (any-hover:hover){
+  .s-drop:hover {
+    display: inline-flex;
+
+  }
+}
+.s-dropmenu {
+  display: none;
+}

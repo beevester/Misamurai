@@ -1,0 +1,27 @@
+{% extends "layouts/homepage.html.twig" %}
+
+{% block body %}
+{{ include('_includes/nav/main.html.twig')}}
+<div class="mainContent">
+
+    {# Content  #}
+    <div class="container-fluid" style="margin: 20px">
+    <div class="row">
+
+    {# side Dashboard #}
+      <div class="col-sm-2 smDashboard">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque deserunt facilis eligendi nam nostrum assumenda libero accusantium ab dolores architecto laudantium earum et fuga dignissimos, aliquid, repudiandae amet! Repellat, voluptatum.</div>
+      <div class="col-sm-6">
+
+          <!-- New API feed mixed nominations and achievements -->
+          <vue-app :nominees="{{userApi}}"></vue-app>
+    </div>
+
+
+    <!-- end of the API call -->
+
+      <div class="col-sm-3"></div>
+    </div>
+    </div>
+
+</div>
+{% endblock %}

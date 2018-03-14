@@ -15,21 +15,16 @@ class MainController extends Controller
     public function index()
     {
         // This is to randomise the feed API for the homepage
-        $em = $this->getDoctrine()->getManager();
-        $nominationsApi = $em->getRepository('App\Entity\User')->findAll();
-
-        
-        
-        
-        // Homepage index rendering
-        return $this->render('main/index.html.twig', [ 'apiCall' => $api, 'user' => $nominationsApi]);
+        return $this->render('main/homepage.html.twig');
     }
 
     /**
-     * @Route("/base")
+     * @Route("/test")
      */
     public function test()
     {
         return $this->render('base.html.twig');
     }
+
+
 }

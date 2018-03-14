@@ -1,12 +1,13 @@
 
 <script>
 
-require([
-    'Vue', 
-    'Vuejs!./components/app.vue',
-    'Vuejs!./components/searchUser.vue'
-    ], 
-    
+define([
+    'Vue',
+    'Vuejs!./components/searchUser',
+    'Vuejs!./components/permission/create',
+    ],
+
     function () {
+
 });
 </script>

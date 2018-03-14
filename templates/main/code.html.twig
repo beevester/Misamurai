@@ -1,0 +1,40 @@
+
+
+{% block main %}
+<div>
+${users}
+</div>
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+
+      var vm = new Vue({
+        el: "#app",
+        delimiters: ['${', '}'],
+        data() {
+          return {
+            users: [],
+            email: [],
+            avatar: []
+          }
+        },
+        methods: {
+
+        },
+        created() {
+            axios.get('/api/users').then(response => {
+              // JSON responses are automatically parsed.
+              this.users = response.data
+            })
+            .catch(e => {
+              this.errors.push(e)
+            })
+        },
+      })
+    </script>
+{% endblock %}

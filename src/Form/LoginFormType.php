@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class LoginFormType extends AbstractType
 {
@@ -15,6 +16,7 @@ class LoginFormType extends AbstractType
         $builder
             ->add('_username')
             ->add('_password', PasswordType::class)
+
         ;
     }
 
@@ -22,7 +24,7 @@ class LoginFormType extends AbstractType
     {
         $resolver->setDefaults([
             // uncomment if you want to bind to a class
-            //'data_class' => LoginForm::class,
+            'data_class' => LoginFormType::class,
         ]);
     }
 }

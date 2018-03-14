@@ -1,55 +1,15 @@
 {% extends "layouts/homepage.html.twig" %}
 
 {% block body %}
-<div class="mainContent" style="margin-top: 70px;">
-  {{ include('_includes/nav/main.html.twig')}}
-    {# Content  #}
-    <div class="container-fluid" style="margin: 20px">
-    <div class="row">
 
-    {# side Dashboard #}
-      <div class="col-sm-2 smDashboard">asdkjf;aksjdf;lakjdf;lkasjdfl;</div>
-      <div class="col-sm-6">
+{% include '_includes/forms/nominate.html.twig' %}
 
-
-          <!-- New API feed mixed nominations and achievements -->
-    
-        <form action="POST">
-          <label for="">username</label></br>
-          <input type="text" name="username"></br>
-          <label for="">Nominee</label></br>
-          <input type="text" name="nominee"></br>
-          <label for="">comment</label></br>
-          <input type="textarea" name="post"></br>
-          <button class="btn btn-primary" type="submit">Nominate</button></n>
-        </form>
-
-    </div>
-
-    
-    <!-- end of the API call -->
-      
-      <div class="col-sm-3"></div>
-    </div>
-    </div>
-  
-
-<test></test>
-</div>
 {% endblock %}
 
 {% block javascripts %}
-<script>
- define(['Vue'], function(Vue){
-  
-  Vue.component('test', {
-    prop: ['name']
-  })
+<script type="text/javascript">
+  require(['js/customs/nominations/nominate.js', 'js/customs/nominations/styles.js'], function(){
 
-  new Vue({
-    el: '#app'
   })
-});
-
 </script>
 {% endblock %}

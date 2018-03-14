@@ -1,0 +1,73 @@
+{% extends 'layouts/managepage.html.twig' %}
+
+{% block main %}
+
+    <div class="flex-container">
+      <div class="columns m-t-10">
+        <div class="column">
+          <h1 class="title">Manage Permission</h1>
+        </div>
+        <div class="column">
+          <a href="{{path('create.permission')}}" class="button is-primary is-pulled-right">
+            <i class="fa fa-user-add m-t-10"></i>Create New Permission
+          </a>
+        </div>
+      </div>
+
+      <hr>
+
+     <div class="columns">
+       <div class="column">
+         <div class="card">
+         <div class="card-content">
+           <table class="table " style="width: 100%" >
+             <thead>
+               <tr>
+
+                 <th>Name</th>
+                 <th>Slug</th>
+                 <th>Description</th>
+
+               </tr>
+             </thead>
+             <tbody>
+
+               <tr>
+                 <td>permission.name</td>
+                 <td>permission.slug</td>
+                 <td>permission.descripion</td>
+               </tr>
+            
+             </tbody>
+           </table>
+         </div>
+
+         </div>
+       </div>
+     </div>
+     </div>
+
+
+
+                 <th>Description</th>
+
+               </tr>
+             </thead>
+             <tbody>
+               @foreach($permissions as $permission)
+               <tr>
+                 <td>permission->name</td>
+                 <td>permission->slug</td>
+                 <td>permission->descripion</td>
+               </tr>
+               @endforeach
+             </tbody>
+           </table>
+         </div>
+
+         </div>
+       </div>
+     </div>
+     </div>
+
+{% endblock %}

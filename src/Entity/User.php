@@ -3,11 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+// use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="app_users")
  */
 class User implements UserInterface, \Serializable
 {
@@ -16,70 +20,75 @@ class User implements UserInterface, \Serializable
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
-     * @ORM\Column(type="string", length=25)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=25, unique=true)
      */
     private $username;
 
-    /**
-     * @ORM\Column(type="string", length=60, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=64)
-     */
-    private $avatar;
-
-   
     /**
      * @ORM\Column(type="string", length=64)
      */
     private $password;
 
-     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+    /**
+     * @ORM\Column(type="string", length=245, unique=true)
      */
-    private $plainPassword;
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $department;
+
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    protected $avatar;
 
     /**
      * @ORM\Column(type="boolean", name="is_active")
      */
-    private $isActive;
+    protected $isActive;
 
     /**
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=true, nullable=true)
      */
-    private $apikey;
+    protected $apikey;
 
-    public function getApiKey()    {
-        return $this->apikei;
-    }
-    
-    public function setApiKey($apikey){
-        $this->apikey = $apikey;
-    }    
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $created_at;
 
     public function __construct(){
         $this->isActive = true;
+        $this->created_at = new \DateTime();
+    }
+
+    public function getId()
+    {
+      return $this->id;
+    }
+    public function getApiKey()    {
+        return $this->apikei;
+    }
+
+    public function setApiKey($apikey){
+        $this->apikey = $apikey;
     }
 
     public function getUsername()    {
         return $this->username;
     }
-    
+
     public function setUsername($username){
         $this->username = $username;
     }
 
     public function getEmail()   {
-        return $this->email;    
+        return $this->email;
     }
 
     public function setEmail($email){
@@ -132,8 +141,9 @@ class User implements UserInterface, \Serializable
     }
 
     public function getRoles(){
-        return array('ROLE_USER');
+        return ['ROLE_USER'];
     }
+
 
     public function eraseCredentials(){
         $this->plainPasswords = null;
@@ -142,7 +152,7 @@ class User implements UserInterface, \Serializable
     public function serialize(){
         return serialize(array(
             $this->id,
-            $this->email,
+            $this->username,
             $this->password
         ));
     }
@@ -150,7 +160,7 @@ class User implements UserInterface, \Serializable
     public function unserialize($serialized){
         list (
             $this->id,
-            $this->email,
+            $this->username,
             $this->password
         ) = unserialize($serialized);
     }
