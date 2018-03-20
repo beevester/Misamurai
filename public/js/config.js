@@ -13,7 +13,8 @@ requirejs.config({
         axios: "lib/axios/dist/axios.min",
         popper: "lib/popper/dist/popper.min",
         lodash: "lib/lodash.min",
-        select2: "lib/select2/dist/js/select2.min"
+        select2: "lib/select2/dist/js/select2.min",
+        fontawesome: "lib/fontawesome-all.min"
     },
     shim: {
         Vue: {

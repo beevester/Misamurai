@@ -20,9 +20,23 @@ class NominationController extends Controller implements \JsonSerializable
      */
     public function index()
     {
-      $nominations = $this->getDoctrine()->getManager()
+        $nominations = $this->getDoctrine()
                     ->getRepository(Nomination::class)
                     ->findAll();
+
+        $response = new Response(json_encode($nominations), 200);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/api/nomination/search/{nominee}")
+     */
+    public function nomineeSearch($nominee)
+    {
+        $nominations = $this->getDoctrine()
+                    ->getRepository(Nomination::class)
+                    ->findByNominee($nominee);
 
         $response = new Response(json_encode($nominations), 200);
         $response->headers->set('Content-Type', 'application/json');
@@ -49,7 +63,7 @@ class NominationController extends Controller implements \JsonSerializable
     public function serializeNominationDetails($nominations)
     {
         return [
-             'test' => $this->serializeUsersDetails($nominations[0])
+             'test' => $nominations->Nomination
              // 'nominee' => $nominations[1]
 
         ];

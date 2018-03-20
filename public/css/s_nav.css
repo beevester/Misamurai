@@ -23,3 +23,14 @@
 .s-dropmenu {
   display: none;
 }
+
+.micard {
+  padding-left: 0px;
+    border-right-width: \; padding-right: 0px;
+    box-shadow: 1px 1px 9px 0px;
+    margin: 10px;
+    padding-right: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-radius: 5px;
+}

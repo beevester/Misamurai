@@ -9,7 +9,7 @@
 
         <!-- Style -->
         {% block stylesheets %}
-
+           <link rel="stylesheet" href="{{ asset('css/bulma.css') }}">
            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
@@ -30,7 +30,7 @@
         </div>
 
         <!-- scripts -->
-        
+
         <script data-main="/js/config" src="{{asset('js/require.js')}}"></script>
         {% block javascripts %}
 

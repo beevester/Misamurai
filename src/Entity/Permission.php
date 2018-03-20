@@ -15,7 +15,7 @@ class Permission
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=60, unique=true)
@@ -26,12 +26,12 @@ class Permission
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      */
-    private $display_name;
+    public $display_name;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      */
-    private $description;
+    public $description;
 
 
     private $permissionUser;

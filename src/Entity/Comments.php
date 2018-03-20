@@ -19,12 +19,12 @@ class Comments
     /**
      * @ORM\Column(type="text")
      */
-    private $comment;
+    public $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity="Nomination")
      */
-    private $nomination;
+    public $nomination;
 
     /**
      * @ORM\Column(type="date")

@@ -13,16 +13,16 @@ class NominationRepository extends ServiceEntityRepository
         parent::__construct($registry, Nomination::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function findByNominee($username)
     {
         return $this->createQueryBuilder('n')
-            ->where('n.something = :value')->setParameter('value', $value)
-            ->orderBy('n.id', 'ASC')
-            ->setMaxResults(10)
+            ->innerJoin('n.nominee', 'c')
+            ->addSelect('c')
+            ->andWhere('c.username LIKE :value')
+            ->setParameter('value', '%'.$username.'%')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 }

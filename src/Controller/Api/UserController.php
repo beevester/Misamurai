@@ -40,7 +40,8 @@ class UserController extends Controller
         return [
             'username' => $users->getUsername(),
             'email' => $users->getEmail(),
-            'avatar' => $users->getAvatar()
+            'avatar' => $users->getAvatar(),
+            'department' => $users->getDepartment()
         ];
     }
 

@@ -17,15 +17,28 @@
           <a class="dropdown-item" href="#">Best ranking</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Winners</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ path('create_user')}}">Add user</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Winners</a>
-      </li>
+
+      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+          <li class="nav-item dropdown clearfix">
+            <a class="nav-link dropdown-toggle float-right" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              User: {{app.user.username}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a href="{{path('logout')}}" class="dropdown-item">logout</a>
+              <a class="dropdown-item" href="{{path('manage.dashboard')}}">Manager Profile</a>
+              <a class="dropdown-item" href="#">Comments</a>
+              <a class="dropdown-item" href="#">Best ranking</a>
+            </div>
+          </li>
+      {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('create_user')}}">Add user</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('login')}}">login</a>
+          </li>
+      {% endif %}
 
     </ul>
   </div>

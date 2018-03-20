@@ -17,11 +17,11 @@ class PermissionController extends Controller
     public function index()
     {
         // replace this line with your own code!
-        $em = $this->getDoctrine()
+        $permissions = $this->getDoctrine()
                    ->getManager()
                    ->getRepository(Permission::class)
                    ->findAll();
-        return $this->render('manage/permissions/index.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
+        return $this->render('manage/permissions/index.html.twig', ['permissions' => $permissions]);
     }
 
     /**
@@ -50,11 +50,12 @@ class PermissionController extends Controller
 
             // Confirms if there is no existing permssion
             if ($perm == null){
+            
               $em = $this->getDoctrine()->getManager();
               $em->persist($permission);
               $em->flush();
             }else{
-            
+
             }
           };
 
@@ -64,14 +65,11 @@ class PermissionController extends Controller
         {
 
         }
-dump('done');die;
 
+        return new Response('done');
 
     }
     /**
-     * [edit description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
      * @Route("/manage/permissions/edit/{id}", name="edit.permission")
      */
     public function edit($id)

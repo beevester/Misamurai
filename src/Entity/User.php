@@ -67,6 +67,13 @@ class User implements UserInterface, \Serializable
         $this->created_at = new \DateTime();
     }
 
+    public function getDepartment()    {
+        return $this->department;
+    }
+
+    public function setDepartment($department){
+        $this->department = $department;
+    }
     public function getId()
     {
       return $this->id;

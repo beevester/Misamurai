@@ -13,16 +13,15 @@ class VotesRepository extends ServiceEntityRepository
         parent::__construct($registry, Votes::class);
     }
 
-    /*
-    public function findBySomething($value)
+    public function findByNomination($value)
     {
-        return $this->createQueryBuilder('v')
-            ->where('v.something = :value')->setParameter('value', $value)
-            ->orderBy('v.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+      return $this->createQueryBuilder('n')
+          ->innerJoin('n.nomination', 'c')
+          ->addSelect('c')
+          ->andWhere('c.id = :value')
+          ->setParameter('value', $value)
+          ->getQuery()
+          ->getOneOrNullResult();
     }
-    */
+
 }

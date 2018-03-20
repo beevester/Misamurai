@@ -28,8 +28,8 @@ services:
     # please note that last definitions always *replace* previous ones
 
         # arguments: ["@em", "@router"]
-    app.security.login_form_authenticator:
-        class: App\Security\LoginFormAuthenticator
+    app.security.Token_authenticator:
+        class: App\Security\TokenAuthenticator
         autowire: true
 
     webservice:

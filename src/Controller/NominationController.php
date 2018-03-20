@@ -46,19 +46,24 @@ class NominationController extends Controller
         $nomination = new Nomination();
         $comment = new Comments();
 
-        $em = $this->getDoctrine()->getManager();
-        $nomination->setNominee($nominee[0]);
-        $nomination->setUser($user[0]);
+        if ($nominee[0] != $user[0]) {
+          $em = $this->getDoctrine()->getManager();
+          $nomination->setNominee($nominee[0]);
+          $nomination->setUser($user[0]);
 
-        $comment->setNomination($nomination);
-        $comment->setComment('test is the');
+          $comment->setNomination($nomination);
+          $comment->setComment($request->get('comment'));
 
-        $em->persist($nomination);
-        $em->persist($comment);
-        $em->flush();
-        $id = $nomination->getId();
+          $em->persist($nomination);
+          $em->persist($comment);
+          $em->flush();
+          $id = $nomination->getId();
+          return $this->redirectToRoute('main.nomination');
+        }else{
+          return new Response('sorry you can not vote for yourself');
+        }
 
-      return $this->redirectToRoute('main.nomination');
+        return $this->redirectToRoute('main.nomination');
     }
 
     public function serializeUsersDetails(User $users)

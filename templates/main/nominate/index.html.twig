@@ -3,9 +3,16 @@
 {% block body %}
 <!-- Button trigger modal -->
 <div class="container" style="margin-bottom:10px">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
+<div class="row" >
+  <input type="text" name="seachNominee" v-model="nomineeInput" placeholder="Please search nominee">
+  ${filteredNominees}
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float-right: 9px;">
+    Nominate
+  </button>
+
+  {% endif %}
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -18,35 +25,64 @@
         </button>
       </div>
       <div class="modal-body">
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% include '_includes/forms/nominate.html.twig' %}
+  {% endif %}
       </div>
 
     </div>
   </div>
 </div>
 </div>
-                <div class="row" v-for="nominee in loadNominationApi">
 
-                      <div class="card shadow col-4">
-                        {% include 'manage/user/partial/userDetails.html.twig' %}
-                        <div class="card-text">
-                          comment Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem nesciunt soluta exercitationem ex, harum ipsa veniam veritatis porro maiores enim hic aspernatur, placeat nam ullam possimus, facilis at fugiat eaque.
-                        </div>
-                        <div class="card-footer">
-                          <span class="btn cardBtn">like</span>
-                          <span  class="btn cardBtn" data-toggle="modal" data-target="#commentModal">Comments</span>
+  <div class="row box micard" v-for="nominee in nominationApi" style="float: left; margin-right: 32px;">
+    <article class="media" style="width: 1000px">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>${userApi[nominee['nominee'].id-1].username}</strong> <small>nominated by: ${userApi[nominee['user'].id-1].username}</small> <small>on the ${nominee['nominateDate'].date}</small>
+          <br>
+          ${commentsApi[nominee['id']-1].comment}
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small" href="#":aria-controls="userApi[nominee['nominee'].id-1].username"><i class="fas fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small" ta-toggle="collapse" href="#collapseComment" role="button" aria-expanded="false" aria-controls="collapseComment"><i class="fas fa-retweet"></i></span>
+          </a>
+          <a class="level-item" v-model="voteApi[nominee['id']]">
+            <span class="icon is-small badge"><i class="fas fa-heart"></i>${voteApi[nominee['nominee'].id-1]}</span>
+          </a>
+        </div>
+      </nav>
 
-                          <!-- Comment modal -->
-                          {{ include('main/nominate/comment/modal.html.twig')}}
-                        </div>
-                      </div>
+      <div :id="userApi[nominee['nominee'].id-1].username" style="border-radius: 28px ;width: 100%;" hidden>
+          <div class="content">
+              <textarea name="name" rows="4" cols="80" style="border-radius: 28px; width: 100%;"l></textarea>
+          </div>
+      </div>
+    </div>
 
-                </div>
+    </article>
+    </div>
+    <!-- label to activate the nomininationApi array for the For loop to work -->
+    <label for="" style="display: none">${nominationApi}</label>
+    <div>
+      {{ dump('{{ nominationApi }}') }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript">
-  require(['js/customs/nominations/nominate.js', 'js/customs/nominations/styles.js'], function(){
+  require(['js/customs/nominations/nominate.js', 'js/customs/nominations/styles.js', ], function(){
 
   })
 </script>

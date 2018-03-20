@@ -55,6 +55,7 @@ class UserController extends Controller
             $user->setPassword($password);
             $user->setAvatar('Place holder');
             $user->setApiKey('dump'.$user->getEmail());
+            $user->setDepartment('Development');
             $user = $form->getData();
 
             $em->persist($user);

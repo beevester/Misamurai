@@ -1,0 +1,57 @@
+{% extends 'layouts/managepage.html.twig' %}
+
+{% block main %}
+  <form class="" action="index.html" method="post">
+    <div class="columns">
+      <div class="column is-two-fifths">
+
+        <div class="card">
+          <div class="card-header">
+            <h5>Crate New Role</h5>
+          </div>
+          <div class="card-content">
+              <label for="">Name of role</label><input type="text">
+          </div>
+          <div class="card-footer">
+            <button class="btn-primary btn btn-sm"type="submit" name="button">Add Role</button>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+        <div class="card-content">
+          <table class="table " style="width: 100%" >
+            <thead>
+              <h5>Permission</h5>
+              <tr>
+                <th>Select</th>
+                <th>Slug</th>
+                <th>Description</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+                <tr v-for="permission in permissionApi">
+                  <td><input type="checkbox" :value="permission.id"v-model="selected_permissions"></td>
+                  <td>${permission.display_name}</td>
+                  <td>${permission.description}</td>
+                </tr>
+                <input type="hidden" name="permissions" :value="selected_permissions">
+             </tbody>
+          </table>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+      require(['/js/customs/roles/roles.js'], function(){
+
+      })
+    </script>
+{% endblock %}

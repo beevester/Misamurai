@@ -31,7 +31,7 @@ class ManageController extends Controller
     public function showUser()
     {
 
-        return $this->render('manage/user/index.html.twig');
+        return $this->render('manage/user/index.html.twig' );
 
     }
 
@@ -55,7 +55,10 @@ class ManageController extends Controller
      */
     public function createPermission(){
 
+
       return $this->render('manage/permission/create.html.twig');
     }
+
+
 
 }

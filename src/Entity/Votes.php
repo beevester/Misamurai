@@ -16,5 +16,33 @@ class Votes
      */
     private $id;
 
-    // add your own fields
+    /**
+     * @ORM\Column(type="integer")
+     */
+    public $vote;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Nomination")
+     */
+    public $nomination;
+
+    public function getNomination()
+    {
+      $this->nomination;
+    }
+
+    public function setNomination($nomination)
+    {
+      $this->nomination = $nomination;
+    }
+
+    public function getVotes()
+    {
+      $this->vote;
+    }
+
+    public function setVotes($vote)
+    {
+      $this->vote = $this->vote + $vote;
+    }
 }
